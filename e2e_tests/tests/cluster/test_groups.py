@@ -138,15 +138,15 @@ def test_group_errors() -> None:
         # Adding non existent users to groups.
         fake_user = get_random_string()
         det_cmd_expect_error(
-            ["user-group", "create", fake_group, "--add-user", fake_user], "not found"
+            ["user-group", "create", fake_group, "--add-user", fake_user], "not find"
         )
-        det_cmd_expect_error(["user-group", "add-user", group_name, fake_user], "not found")
+        det_cmd_expect_error(["user-group", "add-user", group_name, fake_user], "not find")
 
         # Removing a non existent user from group.
-        det_cmd_expect_error(["user-group", "remove-user", group_name, fake_user], "not found")
+        det_cmd_expect_error(["user-group", "remove-user", group_name, fake_user], "not find")
 
         # Removing a user not in a group.
         det_cmd_expect_error(["user-group", "remove-user", group_name, "admin"], "Not Found")
 
         # Describing a non existent group.
-        det_cmd_expect_error(["user-group", "describe", get_random_string()], "not found")
+        det_cmd_expect_error(["user-group", "describe", get_random_string()], "not find")
